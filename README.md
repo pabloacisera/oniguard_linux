@@ -54,6 +54,12 @@ cd pulsedev
 npm link
 ```
 
+## 📺 Demo
+
+Check out PulseDev in action:
+
+<video src="docs/video/video_presentation_v.1.2.mkv" width="100%" controls></video>
+
 ## Quick start
 
 ### 1 — Initialize the project

@@ -14,7 +14,19 @@
     "helpers/",
     "web/"
   ],
-  "keywords": ["guard","hot-reload", "reload","server","live-server", "watcher", "dev-server", "nodejs", "frontend", "socket", "node socket"],
+  "keywords": [
+    "guard",
+    "hot-reload",
+    "reload",
+    "server",
+    "live-server",
+    "watcher",
+    "dev-server",
+    "nodejs",
+    "frontend",
+    "socket",
+    "node socket"
+  ],
   "author": "randomdev",
   "license": "ISC",
   "repository": {
