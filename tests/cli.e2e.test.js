@@ -33,7 +33,7 @@ import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { mkdir, rm, writeFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
@@ -41,6 +41,7 @@ import { tmpdir } from "node:os";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CLI_PATH = join(__dirname, "../bin/cli.js");
 const execFileAsync = promisify(execFile);
+const pkg = JSON.parse(readFileSync(join(__dirname, "../package.json"), "utf-8"));
 
 /**
  * Helper: ejecuta el CLI como proceso externo y captura todo.
@@ -101,7 +102,7 @@ describe("flags globales", () => {
         assert.equal(shortHelp, longHelp, "-h debe dar el mismo output que --help");
     });
 
-    test("--version → stdout es v0.1.1", async () => {
+    test(`"--version → stdout es v${pkg.version}`, async () => {
         /**
          * FLUJO: Se ejecuta pulsedev --version.
          *
@@ -113,7 +114,7 @@ describe("flags globales", () => {
          * SI FALLA: --version muestra un número incorrecto o vacío.
          */
         const { stdout, exitCode } = await runCLI(["--version"]);
-        assert.equal(stdout.trim(), "v0.1.1");
+        assert.equal(stdout.trim(), `v${pkg.version}`);
         assert.equal(exitCode, 0);
     });
 
