@@ -1,5 +1,5 @@
 {
-  "name": "pulsedev",
+  "name": "@randomdev/pulsedev",
   "version": "0.1.2",
   "engines": {
     "node": ">=22.0.0"
