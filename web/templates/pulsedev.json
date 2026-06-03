@@ -1,0 +1,10 @@
+{
+    "watchPath":["*"],
+    "runFile":"index.html",
+    "port": 3003,
+    "outputPath": "log",
+    "ignoreExtensions": ["*.txt","*.log","*.env","*.md"],
+    "debounceDelay": 0.5,
+    "recursive": true,
+    "logLimit": 5
+}

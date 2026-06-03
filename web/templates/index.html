@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseDev · Servidor de Desarrollo</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand-group">
+            <img src="assets/logo.png" alt="PulseDev Logo" class="header-logo">
+            <div class="brand-text">
+                <span class="brand-name">PulseDev</span>
+                <span class="brand-tagline">Servidor web nativo para desarrollo</span>
+            </div>
+        </div>
+        <div class="actions-group">
+            <button id="toggleDocsBtn" class="toggle-btn">Ver Documentación</button>
+            <div class="social-icons">
+                <a href="https://github.com/pabloacisera/pulsedev_linux" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <img src="assets/github.svg" alt="GitHub">
+                </a>
+                <a href="https://www.npmjs.com/package/pulsedev" target="_blank" rel="noopener noreferrer" title="NPM">
+                    <img src="assets/npm.svg" alt="NPM">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="main-content">
+        <section id="demoContainer" class="view-container">
+            <div class="hero-section">
+                <h2>Entorno de desarrollo activo</h2>
+                <p>Tu servidor está corriendo de manera óptima. Usa esta interfaz para validar las capacidades del Live Reload y WebSocket.</p>
+            </div>
+
+            <div class="counter-card">
+                <h3>Demo Interactiva</h3>
+                <div class="counter-display">
+                    <span id="counterValue">0</span>
+                </div>
+                <div class="counter-buttons">
+                    <button id="decrementBtn" class="counter-btn" aria-label="Decrementar">-</button>
+                    <button id="incrementBtn" class="counter-btn" aria-label="Incrementar">+</button>
+                </div>
+                <p class="counter-status">Eventos reactivos en tiempo real vía JavaScript</p>
+            </div>
+
+            <div class="server-status">
+                <span class="status-indicator"></span>
+                <span class="status-text">PulseDev activo · Puerto 3003</span>
+            </div>
+        </section>
+
+        <section id="docsContainer" class="view-container" style="display: none;">
+            </section>
+    </main>
+
+    <script type="module" src="js/socket-client.js"></script>
+    <script type="module" src="js/index.js"></script>
+</body>
+</html>

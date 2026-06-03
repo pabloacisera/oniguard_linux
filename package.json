@@ -1,0 +1,37 @@
+{
+  "name": "pulsedev",
+  "version": "0.1.1",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "description": "⚡ PulseDev - Fast, native Node.js development server featuring live reload, recursive file watching, configurable debouncing, native socket for client, and comprehensive logging without production dependencies",
+  "bin": {
+    "pulsedev": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "core/",
+    "helpers/",
+    "web/"
+  ],
+  "keywords": ["guard","hot-reload", "reload","server","live-server", "watcher", "dev-server", "nodejs", "frontend", "socket", "node socket"],
+  "author": "randomdev",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabloacisera/pulsedev_linux.git"
+  },
+  "homepage": "https://github.com/pabloacisera/pulsedev_linux#readme",
+  "bugs": {
+    "url": "https://github.com/pabloacisera/pulsedev_linux/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:watch": "node --test --watch tests/*.test.js",
+    "test:hash": "node --test tests/hashFingerprint.test.js",
+    "test:writter": "node --test tests/writter.test.js",
+    "test:counter": "node --test tests/counterChar.test.js",
+    "test:server": "node --test tests/server.test.js"
+  }
+}

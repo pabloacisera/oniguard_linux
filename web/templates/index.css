@@ -1,0 +1,397 @@
+@font-face {
+    font-family: "Arimo Regular";
+    src: url(../assets/Arimo-VariableFont_wght.ttf);
+}
+
+:root {
+    --bg-main: #0b0f19;
+    --bg-card: #131b2e;
+    --bg-surface: #1e293b;
+    --border-color: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --success: #10b981;
+    --success-bg: rgba(16, 185, 129, 0.1);
+    --font-sans: "Arimo Regular", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- HEADER --- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(19, 27, 46, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 0.85rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--text-main);
+}
+
+.brand-tagline {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.actions-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.social-icons img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Convierte íconos oscuros a claros para el Dark Mode */
+}
+
+/* --- INTERRUPTOR (TOGGLE BUTTON) --- */
+.toggle-btn {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.toggle-btn:hover {
+    background-color: var(--border-color);
+    border-color: var(--accent);
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.main-content {
+    flex: 1;
+    width: 100%;
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.view-container {
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SECTION: DEMO --- */
+.hero-section {
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.hero-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.hero-section p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.counter-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.counter-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.counter-display {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+}
+
+.counter-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.counter-btn {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 1.25rem;
+    width: 46px;
+    height: 46px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.counter-btn:hover {
+    background-color: var(--accent);
+    color: var(--bg-main);
+    border-color: var(--accent);
+}
+
+.counter-status {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.server-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--success-bg);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 20px;
+    margin: 0 auto;
+    display: flex;
+    width: max-content;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: var(--success);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--success);
+}
+
+.status-text {
+    font-size: 0.85rem;
+    color: var(--success);
+    font-weight: 500;
+}
+
+/* --- SECTION: DOCUMENTACIÓN --- */
+.docs-header {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.docs-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.35rem;
+}
+
+.docs-subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+.docs-content h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem 0;
+    color: var(--text-main);
+    letter-spacing: -0.3px;
+}
+
+.docs-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.75rem 0 0.75rem 0;
+    color: var(--accent);
+}
+
+.docs-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.docs-content ul, .docs-content ol {
+    margin: 1rem 0 1.5rem 2rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.docs-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Código e Bloques */
+.docs-content code {
+    background-color: var(--bg-surface);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: var(--accent);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.docs-content pre {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.25rem 0;
+}
+
+.docs-content pre code {
+    background-color: transparent;
+    color: #e2e8f0;
+    padding: 0;
+    border: none;
+    font-size: 0.9rem;
+}
+
+/* Tablas Responsivas */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.docs-content table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+    background-color: var(--bg-card);
+}
+
+.docs-content th {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.docs-content td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+    color: var(--text-muted);
+}
+
+.docs-content tr:last-child td {
+    border-bottom: none;
+}
+
+/* Bloques de Citas (Quote) */
+.docs-content blockquote {
+    border-left: 3px solid var(--accent);
+    background-color: var(--bg-card);
+    padding: 1rem 1.25rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.docs-content blockquote p {
+    margin-bottom: 0;
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 640px) {
+    .site-header {
+        padding: 1rem;
+    }
+    .brand-tagline, .social-icons {
+        display: none; /* Simplifica UI en pantallas móviles muy chicas */
+    }
+    .main-content {
+        padding: 1.5rem 1rem;
+    }
+    .counter-card {
+        padding: 1.5rem;
+    }
+    .counter-display {
+        font-size: 3.5rem;
+    }
+}

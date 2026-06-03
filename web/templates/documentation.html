@@ -1,0 +1,65 @@
+<div class="docs-content">
+    <div class="docs-header">
+        <h1>⚡ PulseDev Documentation</h1>
+        <p class="docs-subtitle">Servidor local nativo · Cero dependencias · Hot Reload</p>
+    </div>
+
+    <h2>🚀 Comenzar</h2>
+    <p>Edita los archivos dentro del directorio <code>src/</code> de tu proyecto. PulseDev detectará automáticamente cualquier cambio en el sistema de archivos y actualizará el navegador al instante.</p>
+
+    <pre><code>src/
+├── index.html       ← Punto de entrada principal
+├── css/
+│   └── index.css    ← Estilos de la aplicación
+├── js/
+│   └── index.js     ← Lógica del lado del cliente
+└── assets/          ← Recursos estáticos (imágenes, fuentes)</code></pre>
+
+    <h2>⚙️ Configuración — <code>pulsedev.json</code></h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Descripción</th>
+                    <th>Por defecto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>watchPath</code></td><td>Directorios bajo vigilancia del watcher</td><td><code>["*"]</code></td></tr>
+                <tr><td><code>runFile</code></td><td>Archivo HTML de entrada inicial</td><td><code>"index.html"</code></td></tr>
+                <tr><td><code>port</code></td><td>Puerto de escucha del servidor local</td><td><code>3003</code></td></tr>
+                <tr><td><code>outputPath</code></td><td>Destino de logs: archivo (<code>"log"</code>) o salida estándar (<code>"terminal"</code>)</td><td><code>"log"</code></td></tr>
+                <tr><td><code>ignoreExtensions</code></td><td>Filtros de exclusión para el Hot Reload</td><td><code>["*.txt","*.log","*.env","*.md"]</code></td></tr>
+                <tr><td><code>debounceDelay</code></td><td>Tiempo de espera (segundos) antes de refrescar</td><td><code>0.5</code></td></tr>
+                <tr><td><code>recursive</code></td><td>Vigilancia de subdirectorios del árbol</td><td><code>true</code></td></tr>
+                <tr><td><code>logLimit</code></td><td>Umbral máximo del archivo de logs (KB)</td><td><code>5</code></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>🖥️ Comandos disponibles</h2>
+    <pre><code>pulsedev init      # Inicializa la estructura base del proyecto
+pulsedev run       # Ejecuta el servidor de desarrollo y el watcher
+pulsedev --help    # Muestra el panel de ayuda y opciones
+pulsedev --version # Devuelve la versión instalada en el sistema</code></pre>
+
+    <h2>👁️ Hot Reload Automático</h2>
+    <p>PulseDev monitorea el estado del proyecto utilizando primitivas nativas de <code>fs.watch</code>. Al detectar una modificación, realiza una verificación mediante un hash <strong>MD5</strong> para asegurar un cambio real en el contenido, evitando falsos positivos. Las respuestas de recursos estáticos incluyen políticas dinámicas de <em>cache busting</em> para forzar la lectura del nuevo código.</p>
+
+    <h3>🔌 Infraestructura WebSocket</h3>
+    <p>El mecanismo de sincronización utiliza un canal de comunicación bidireccional mediante <strong>WebSockets</strong> de bajo overhead:</p>
+    <ol>
+        <li>El cliente inicializa y sostiene una conexión persistente contra el socket del servidor de desarrollo.</li>
+        <li>Ante una recarga del proceso del servidor, las conexiones se finalizan de manera controlada.</li>
+        <li>El script cliente captura los eventos nativos de desconexión (<code>onclose</code> / <code>onerror</code>).</li>
+        <li>Se dispara una recarga forzada en el navegador web para reflejar el último estado.</li>
+    </ol>
+
+    <h3>📝 Arquitectura de Logs</h3>
+    <p>Por omisión, las interacciones HTTP son procesadas y enviadas hacia <code>logs/requests.log</code>. Un subproceso en segundo plano (<strong>Worker Thread</strong> nativo) gestiona las tareas de rotación del archivo en función de la propiedad <code>logLimit</code>, previniendo cuellos de botella en el bucle de eventos principal.</p>
+
+    <blockquote>
+        ⚡ PulseDev · Optimizado sobre Node.js Nativo · Peso total: 1.7MB
+    </blockquote>
+</div>
