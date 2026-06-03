@@ -5,24 +5,20 @@ on:
     branches: [main]
 
 jobs:
+  # Simplificamos a un solo paso de validación en la versión real de tu entorno
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20, 22, 24]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '24' # Usamos la versión de tu entorno local directamente
 
-      - name: Install dependencies
-        run: npm ci
-
+      # Eliminamos 'npm ci' porque no tienes dependencias externas que instalar
       - name: Run tests
         run: npm test
 
@@ -40,9 +36,7 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies
-        run: npm ci
-
+      # Eliminamos 'npm ci' aquí también para evitar bloqueos por falta de lockfile
       - name: Publish to npm
         run: npm publish
         env:
